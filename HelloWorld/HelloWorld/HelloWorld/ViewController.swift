@@ -21,11 +21,26 @@ class ViewController: UIViewController {
     }
     
     
-
-    @IBAction func helloClicked(sender: UIButton) {
-        sender.setTitle( "Yo", forState:  UIControlState.Normal)
-    }
     
+    var currentCount: Int = 0 {
+        didSet {
+            
+            
+            println("updated \(currentCount)")
+            
+            updateLilButton()
+        }
+    }
+
+    @IBOutlet weak var lilButton: UIButton!
+    @IBAction func helloClicked(sender: UIButton) {
+        currentCount++
+    }
+
+    
+    private func updateLilButton(){
+          lilButton.setTitle( "Yo \(currentCount)", forState:  UIControlState.Normal)
+    }
     
 
 }
