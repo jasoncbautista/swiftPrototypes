@@ -26,7 +26,7 @@ class ViewController: UIViewController, NSURLSessionDelegate, NSURLSessionTaskDe
         
         
         let bundle = NSBundle.mainBundle()
-        let path = bundle.pathForResource("TROLL", ofType: "jpg")
+        let path = bundle.pathForResource("lilTroll2", ofType: "jpg")
         var data: NSData = NSData(contentsOfFile: path!)!
         
         
