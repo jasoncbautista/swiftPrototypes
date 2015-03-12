@@ -120,33 +120,9 @@ class ViewController: UIViewController, NSURLSessionDelegate, NSURLSessionTaskDe
         
         
    
-      // /* TODO GENERATE STRING
-        var media  = [
-           [
-            "contentType": "video/quicktime",
-            "ext": "mov",
-            //file: {webkitRelativePath: "", lastModified: 1426187355000, lastModifiedDate: "2015-03-12T19:09:15.000Z",…}
-            "link": "https://sqor-videos-input-dev.s3.amazonaws.com/5a08e550-2ad6-4a9b-8469-58f94561e7cb.mov",
-            "name": "video.mov",
-            "type": "video"
-            
-            
-            ]
-        ]
 
         
-        
-     //   var params = ["content":  "SUPER CONTENT" , "media" : "[{\"contentType\":\"image/png\",\"ext\":\"mov\",\"link\":\"https://sqor-videos-input-dev.s3.amazonaws.com/5a08e550-2ad6-4a9b-8469-58f94561e7cb.mov\",\"name\":\"video.mov\",\"type\":\"video\"}]" ] as Dictionary<String, String>
-        
-        
-        
-        
-        
-        //var params = ["content":  "SUPER CONTENT" , "media" : media ] // as Dictionary<String, String>
-        
-        
-        // let json_Str = "{\"content\": \"ok2\", \"media\" : [{\"contentType\":\"video/quicktime\",\"ext\":\"mov\",\"link\":\"https://sqor-videos-input-dev.s3.amazonaws.com/5a08e550-2ad6-4a9b-8469-58f94561e7cb.mov\",\"name\":\"video.mov\",\"type\":\"video\"}]}"   //NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
-        
+
         
         println("ACTUAL POST URL ")
   
@@ -161,8 +137,7 @@ class ViewController: UIViewController, NSURLSessionDelegate, NSURLSessionTaskDe
         let json_Str = "{\"content\": \"ok3 why name a wankster\", \"media\" : [{\"contentType\":\"image/png\",\"ext\":\"png\",\"link\":\""
         +
             link +
-        //https://sqor-videos-input-dev.s3.amazonaws.com/a93785c8-72fd-4c62-8f82-3ab76eb572e4.mov
-        
+            
         "\",\"name\":\"image.png\",\"type\":\"image\"}]}"   //NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
         
         println(json_Str)
@@ -266,9 +241,9 @@ class ViewController: UIViewController, NSURLSessionDelegate, NSURLSessionTaskDe
         //  let accessToken = userData.valueForKey("access_token") as String;
         
         
-        var params = ["content_type": "video/quicktime",
-            "file_extension": "mov",
-            "media_type": "video"   ] as Dictionary<String, String>
+        var params = ["content_type": "image/png",
+            "file_extension": "png",
+            "media_type": "image"   ] as Dictionary<String, String>
         
         var err: NSError?
         request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
