@@ -26,3 +26,5 @@ Full screen
 cmd + 0 
 CMd + alt + 0
 
+
+http://lldb.llvm.org/tutorial.html
