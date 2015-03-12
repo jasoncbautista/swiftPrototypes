@@ -26,7 +26,7 @@ class ViewController: UIViewController, NSURLSessionDelegate, NSURLSessionTaskDe
         
         
         let bundle = NSBundle.mainBundle()
-        let path = bundle.pathForResource("lilTroll2", ofType: "jpg")
+        let path = bundle.pathForResource("video2", ofType: "mov")
         var data: NSData = NSData(contentsOfFile: path!)!
         
         
@@ -59,7 +59,7 @@ class ViewController: UIViewController, NSURLSessionDelegate, NSURLSessionTaskDe
       //  let accessToken = "PRppT0hm6ZkDf9OvtfufPWqiH/zsY2npspRL3iBZwTNVOs8cV0HIwAytbH782l0J"
       //  request.addValue(accessToken , forHTTPHeaderField: "access-token")
         
-        request.setValue("image/jpeg", forHTTPHeaderField: "Content-Type")
+        request.setValue("video/quicktime", forHTTPHeaderField: "Content-Type")
         uploadFiles(request, data: data)
        
         
@@ -126,9 +126,9 @@ class ViewController: UIViewController, NSURLSessionDelegate, NSURLSessionTaskDe
         
         let accessToken = "tFuNwNJlQycnhW+NXJ43CAAFAE4vwIXryKTTT3ys+Y5/iCfZxaWyq7kt5sczHVIz"
         
-        var params = ["content_type": "image/jpeg",
-            "file_extension": "jpg",
-            "media_type": "image"   ] as Dictionary<String, String>
+        var params = ["content_type": "video/quicktime",
+            "file_extension": "mov",
+            "media_type": "video"   ] as Dictionary<String, String>
         
         var err: NSError?
         request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)

@@ -16,6 +16,7 @@
 		8BCEEDA81A09C14B005F1E0E /* NSURLSessionUploadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BCEEDA71A09C14B005F1E0E /* NSURLSessionUploadTests.swift */; };
 		8BCEEDB31A0A032D005F1E0E /* swift.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BCEEDB21A0A032D005F1E0E /* swift.png */; };
 		E84EF7E21AB2172F00344B18 /* lilTroll2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E84EF7E11AB2172F00344B18 /* lilTroll2.jpg */; };
+		E84EF7E61AB21F7200344B18 /* video2.mov in Resources */ = {isa = PBXBuildFile; fileRef = E84EF7E51AB21F7200344B18 /* video2.mov */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		8BCEEDA71A09C14B005F1E0E /* NSURLSessionUploadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSURLSessionUploadTests.swift; sourceTree = "<group>"; };
 		8BCEEDB21A0A032D005F1E0E /* swift.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = swift.png; sourceTree = "<group>"; };
 		E84EF7E11AB2172F00344B18 /* lilTroll2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lilTroll2.jpg; sourceTree = "<group>"; };
+		E84EF7E51AB21F7200344B18 /* video2.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = video2.mov; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 			children = (
 				074FF7461AB14B8800A32387 /* TROLL.jpg */,
 				E84EF7E11AB2172F00344B18 /* lilTroll2.jpg */,
+				E84EF7E51AB21F7200344B18 /* video2.mov */,
 				8BCEEDB21A0A032D005F1E0E /* swift.png */,
 			);
 			name = Files;
@@ -210,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E84EF7E21AB2172F00344B18 /* lilTroll2.jpg in Resources */,
+				E84EF7E61AB21F7200344B18 /* video2.mov in Resources */,
 				8BCEED971A09C14B005F1E0E /* Main.storyboard in Resources */,
 				8BCEEDB31A0A032D005F1E0E /* swift.png in Resources */,
 				074FF7471AB14B8800A32387 /* TROLL.jpg in Resources */,
