@@ -1,3 +1,4 @@
+
 SImple Image upload in URLSessinUPload
 
 
@@ -9,3 +10,19 @@ http://revealapp.com/
 
 # Networking Debuggin
 ponyDebugger
+
+Debug -> View Debugging -> Capture View Hierachy 
+
+
+
+Cmd + Shift + O
+
+
+Cmd + Shift + F
+
+
+
+Full screen 
+cmd + 0 
+CMd + SHift + 0
+
