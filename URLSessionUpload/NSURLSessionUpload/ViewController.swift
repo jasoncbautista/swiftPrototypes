@@ -50,13 +50,16 @@ class ViewController: UIViewController, NSURLSessionDelegate, NSURLSessionTaskDe
         
         var request = NSMutableURLRequest(URL: url! )
         request.HTTPMethod = "PUT"
-        request.setValue("Keep-Alive", forHTTPHeaderField: "Connection")
+        request.setValue("keep-alive", forHTTPHeaderField: "Connection")
         
+        
+        
+     //   request.setValue("Content-Type", forHTTPHeaderField: "image/jpeg")
         
       //  let accessToken = "PRppT0hm6ZkDf9OvtfufPWqiH/zsY2npspRL3iBZwTNVOs8cV0HIwAytbH782l0J"
       //  request.addValue(accessToken , forHTTPHeaderField: "access-token")
         
-        request.setValue("Content-Type", forHTTPHeaderField: "image/jpeg")
+        request.setValue("image/jpeg", forHTTPHeaderField: "Content-Type")
         uploadFiles(request, data: data)
        
         
