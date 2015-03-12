@@ -158,7 +158,7 @@ class ViewController: UIViewController, NSURLSessionDelegate, NSURLSessionTaskDe
         println(link)
         
                 println("ACTUAL POST URL ")
-        let json_Str = "{\"content\": \"ok3\", \"media\" : [{\"contentType\":\"video/quicktime\",\"ext\":\"mov\",\"link\":\""
+        let json_Str = "{\"content\": \"ok3 why name a wankster\", \"media\" : [{\"contentType\":\"video/quicktime\",\"ext\":\"mov\",\"link\":\""
         +
             link +
         //https://sqor-videos-input-dev.s3.amazonaws.com/a93785c8-72fd-4c62-8f82-3ab76eb572e4.mov
