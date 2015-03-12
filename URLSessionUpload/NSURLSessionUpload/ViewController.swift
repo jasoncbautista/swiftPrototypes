@@ -13,7 +13,7 @@ class ViewController: UIViewController, NSURLSessionDelegate, NSURLSessionTaskDe
     
     let accessToken = "+1gC70EnpV7yZlrJUK4PfPmclT8kEIpCzfXCu/JMfGFjpMPvUg7wRHeWvaLTA9zk"
 
-    
+    var link = ""
     var responseData = NSMutableData()
     @IBOutlet weak var progressView: UIProgressView!
     override func viewDidLoad() {
@@ -48,7 +48,11 @@ class ViewController: UIViewController, NSURLSessionDelegate, NSURLSessionTaskDe
         println("OMG OMG OMG")
         println("OMG OMG OMG")
         
+        
+        
         println(realURL)
+        
+        self.link = realURL
         let url = NSURL(string: realURL)
         
         
@@ -143,9 +147,26 @@ class ViewController: UIViewController, NSURLSessionDelegate, NSURLSessionTaskDe
         
         // let json_Str = "{\"content\": \"ok2\", \"media\" : [{\"contentType\":\"video/quicktime\",\"ext\":\"mov\",\"link\":\"https://sqor-videos-input-dev.s3.amazonaws.com/5a08e550-2ad6-4a9b-8469-58f94561e7cb.mov\",\"name\":\"video.mov\",\"type\":\"video\"}]}"   //NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
         
-  
-        let json_Str = "{\"content\": \"ok2\", \"media\" : [{\"contentType\":\"video/quicktime\",\"ext\":\"mov\",\"link\":\"https://sqor-videos-input-dev.s3.amazonaws.com/a93785c8-72fd-4c62-8f82-3ab76eb572e4.mov\",\"name\":\"video.mov\",\"type\":\"video\"}]}"   //NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
         
+        println("ACTUAL POST URL ")
+  
+  
+        var fullNameArr = split(self.link) {$0 == "?"}
+        var link : String = fullNameArr[0]
+        
+        
+        println(link)
+        
+                println("ACTUAL POST URL ")
+        let json_Str = "{\"content\": \"ok3\", \"media\" : [{\"contentType\":\"video/quicktime\",\"ext\":\"mov\",\"link\":\""
+        +
+            link +
+        //https://sqor-videos-input-dev.s3.amazonaws.com/a93785c8-72fd-4c62-8f82-3ab76eb572e4.mov
+        
+        "\",\"name\":\"video.mov\",\"type\":\"video\"}]}"   //NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
+        
+        println(json_Str)
+        println(" JSON OBJ")
         
         //let json_Str = "{\"content\": \"ok2 yy\" }"
         
