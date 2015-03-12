@@ -88,10 +88,11 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         myImageView.contentMode = .ScaleAspectFit //3
         myImageView.image = chosenImage //4
         
-
+        var nsDataImage = UIImagePNGRepresentation(chosenImage)
         dismissViewControllerAnimated(true, completion: nil) //5
         
         println("PICKED PHOTO")
+      //  println(    nsDataImage.description)
     }
     //What to do if the image picker cancels.
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
