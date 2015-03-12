@@ -24,5 +24,5 @@ Cmd + Shift + F
 
 Full screen 
 cmd + 0 
-CMd + SHift + 0
+CMd + alt + 0
 
