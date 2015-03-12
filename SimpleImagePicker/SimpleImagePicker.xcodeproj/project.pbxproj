@@ -13,6 +13,7 @@
 		E84EF7FF1AB24AB900344B18 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E84EF7FE1AB24AB900344B18 /* Images.xcassets */; };
 		E84EF8021AB24AB900344B18 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E84EF8001AB24AB900344B18 /* LaunchScreen.xib */; };
 		E84EF80E1AB24AB900344B18 /* SimpleImagePickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84EF80D1AB24AB900344B18 /* SimpleImagePickerTests.swift */; };
+		E84EF8181AB252A000344B18 /* tshirt.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E84EF8171AB252A000344B18 /* tshirt.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		E84EF8071AB24AB900344B18 /* SimpleImagePickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleImagePickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E84EF80C1AB24AB900344B18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E84EF80D1AB24AB900344B18 /* SimpleImagePickerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleImagePickerTests.swift; sourceTree = "<group>"; };
+		E84EF8171AB252A000344B18 /* tshirt.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tshirt.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		E84EF7F41AB24AB900344B18 /* SimpleImagePicker */ = {
 			isa = PBXGroup;
 			children = (
+				E84EF8171AB252A000344B18 /* tshirt.jpg */,
 				E84EF7F71AB24AB900344B18 /* AppDelegate.swift */,
 				E84EF7F91AB24AB900344B18 /* ViewController.swift */,
 				E84EF7FB1AB24AB900344B18 /* Main.storyboard */,
@@ -195,6 +198,7 @@
 				E84EF7FD1AB24AB900344B18 /* Main.storyboard in Resources */,
 				E84EF8021AB24AB900344B18 /* LaunchScreen.xib in Resources */,
 				E84EF7FF1AB24AB900344B18 /* Images.xcassets in Resources */,
+				E84EF8181AB252A000344B18 /* tshirt.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
