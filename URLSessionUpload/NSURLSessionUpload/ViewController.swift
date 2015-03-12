@@ -116,19 +116,56 @@ class ViewController: UIViewController, NSURLSessionDelegate, NSURLSessionTaskDe
         
         
    
+      // /* TODO GENERATE STRING
+        var media  = [
+           [
+            "contentType": "video/quicktime",
+            "ext": "mov",
+            //file: {webkitRelativePath: "", lastModified: 1426187355000, lastModifiedDate: "2015-03-12T19:09:15.000Z",…}
+            "link": "https://sqor-videos-input-dev.s3.amazonaws.com/5a08e550-2ad6-4a9b-8469-58f94561e7cb.mov",
+            "name": "video.mov",
+            "type": "video"
+            
+            
+            ]
+        ]
 
         
         
-        var params = ["content":  "SUPER CONTENT" ] as Dictionary<String, String>
+     //   var params = ["content":  "SUPER CONTENT" , "media" : "[{\"contentType\":\"video/quicktime\",\"ext\":\"mov\",\"link\":\"https://sqor-videos-input-dev.s3.amazonaws.com/5a08e550-2ad6-4a9b-8469-58f94561e7cb.mov\",\"name\":\"video.mov\",\"type\":\"video\"}]" ] as Dictionary<String, String>
+        
+        
+        
+        
+        
+        //var params = ["content":  "SUPER CONTENT" , "media" : media ] // as Dictionary<String, String>
+        
+        
+        // let json_Str = "{\"content\": \"ok2\", \"media\" : [{\"contentType\":\"video/quicktime\",\"ext\":\"mov\",\"link\":\"https://sqor-videos-input-dev.s3.amazonaws.com/5a08e550-2ad6-4a9b-8469-58f94561e7cb.mov\",\"name\":\"video.mov\",\"type\":\"video\"}]}"   //NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
+        
+  
+        let json_Str = "{\"content\": \"ok2\", \"media\" : [{\"contentType\":\"video/quicktime\",\"ext\":\"mov\",\"link\":\"https://sqor-videos-input-dev.s3.amazonaws.com/a93785c8-72fd-4c62-8f82-3ab76eb572e4.mov\",\"name\":\"video.mov\",\"type\":\"video\"}]}"   //NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
+        
+        
+        //let json_Str = "{\"content\": \"ok2 yy\" }"
+        
+        let jsonData   = (json_Str as NSString).dataUsingEncoding(NSUTF8StringEncoding)
+        request.HTTPBody = jsonData
+        
+        
+        
         
         var err: NSError?
-        request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
+        //request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         //  request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue(accessToken , forHTTPHeaderField: "access-token")
         request.addValue("6", forHTTPHeaderField: "sqor-api-version")
         
         var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+            
+            println("WTF WHY IS THIS FAILIN----------------")
+            
             println("Response: \(response)")
             var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
             println("Body: \(strData)")
