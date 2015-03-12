@@ -10,6 +10,10 @@ import UIKit
 
 class ViewController: UIViewController, NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate {
 
+    
+    let accessToken = "+1gC70EnpV7yZlrJUK4PfPmclT8kEIpCzfXCu/JMfGFjpMPvUg7wRHeWvaLTA9zk"
+
+    
     var responseData = NSMutableData()
     @IBOutlet weak var progressView: UIProgressView!
     override func viewDidLoad() {
@@ -82,8 +86,87 @@ class ViewController: UIViewController, NSURLSessionDelegate, NSURLSessionTaskDe
             println("session \(session) occurred error \(error?.localizedDescription)")
         } else {
             println("session \(session) upload completed, response: \(NSString(data: responseData, encoding: NSUTF8StringEncoding))")
+            
+            
+            
+            makePost()
         }
     }
+    
+    
+    func makePost(){
+        
+        
+        
+        
+        println("submitting post")
+        
+        // if blank dont submit
+        
+        
+
+        
+        
+        var request = NSMutableURLRequest(URL: NSURL(string: "https://rest-dev.sqor.com/posts")!)
+        var session = NSURLSession.sharedSession()
+        request.HTTPMethod = "POST"
+        
+        
+  
+        
+        
+   
+
+        
+        
+        var params = ["content":  "SUPER CONTENT" ] as Dictionary<String, String>
+        
+        var err: NSError?
+        request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        //  request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue(accessToken , forHTTPHeaderField: "access-token")
+        request.addValue("6", forHTTPHeaderField: "sqor-api-version")
+        
+        var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+            println("Response: \(response)")
+            var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
+            println("Body: \(strData)")
+            var err: NSError?
+            var json = NSJSONSerialization.JSONObjectWithData(data, options: .MutableLeaves, error: &err) as? NSDictionary
+            
+            // Did the JSONObjectWithData constructor return an error? If so, log the error to the console
+            if(err != nil) {
+                println(err!.localizedDescription)
+                let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
+                println("Error could not parse JSON: '\(jsonStr)'")
+            }
+            else {
+                // The JSONObjectWithData constructor didn't return an error. But, we should still
+                // check and make sure that json has a value using optional binding.
+                if let parseJSON = json {
+                    // Okay, the parsedJSON is here, let's get the value for 'success' out of it
+                    var success = parseJSON["success"] as? Int
+                    println("Succes: \(success)")
+                }
+                else {
+                    // Woa, okay the json object was nil, something went worng. Maybe the server isn't running?
+                    let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
+                    println("Error could not parse JSON: \(jsonStr)")
+                }
+            }
+        })
+        
+        task.resume()
+        
+        
+    }
+    
+    
+    
+    
+    
+    
     
     func URLSession(session: NSURLSession, task: NSURLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) {
         var uploadProgress: Float = Float(totalBytesSent) / Float(totalBytesExpectedToSend)
@@ -124,7 +207,6 @@ class ViewController: UIViewController, NSURLSessionDelegate, NSURLSessionTaskDe
         //  let userData = tbController.userData;
         //  let accessToken = userData.valueForKey("access_token") as String;
         
-        let accessToken = "tFuNwNJlQycnhW+NXJ43CAAFAE4vwIXryKTTT3ys+Y5/iCfZxaWyq7kt5sczHVIz"
         
         var params = ["content_type": "video/quicktime",
             "file_extension": "mov",
