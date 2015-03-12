@@ -30,7 +30,7 @@ class ViewController: UIViewController, NSURLSessionDelegate, NSURLSessionTaskDe
         
         
         let bundle = NSBundle.mainBundle()
-        let path = bundle.pathForResource("video2", ofType: "mov")
+        let path = bundle.pathForResource("greenbright01", ofType: "png")
         var data: NSData = NSData(contentsOfFile: path!)!
         
         
@@ -67,7 +67,7 @@ class ViewController: UIViewController, NSURLSessionDelegate, NSURLSessionTaskDe
       //  let accessToken = "PRppT0hm6ZkDf9OvtfufPWqiH/zsY2npspRL3iBZwTNVOs8cV0HIwAytbH782l0J"
       //  request.addValue(accessToken , forHTTPHeaderField: "access-token")
         
-        request.setValue("video/quicktime", forHTTPHeaderField: "Content-Type")
+        request.setValue("image/png", forHTTPHeaderField: "Content-Type")
         uploadFiles(request, data: data)
        
         
@@ -136,7 +136,7 @@ class ViewController: UIViewController, NSURLSessionDelegate, NSURLSessionTaskDe
 
         
         
-     //   var params = ["content":  "SUPER CONTENT" , "media" : "[{\"contentType\":\"video/quicktime\",\"ext\":\"mov\",\"link\":\"https://sqor-videos-input-dev.s3.amazonaws.com/5a08e550-2ad6-4a9b-8469-58f94561e7cb.mov\",\"name\":\"video.mov\",\"type\":\"video\"}]" ] as Dictionary<String, String>
+     //   var params = ["content":  "SUPER CONTENT" , "media" : "[{\"contentType\":\"image/png\",\"ext\":\"mov\",\"link\":\"https://sqor-videos-input-dev.s3.amazonaws.com/5a08e550-2ad6-4a9b-8469-58f94561e7cb.mov\",\"name\":\"video.mov\",\"type\":\"video\"}]" ] as Dictionary<String, String>
         
         
         
@@ -158,12 +158,12 @@ class ViewController: UIViewController, NSURLSessionDelegate, NSURLSessionTaskDe
         println(link)
         
                 println("ACTUAL POST URL ")
-        let json_Str = "{\"content\": \"ok3 why name a wankster\", \"media\" : [{\"contentType\":\"video/quicktime\",\"ext\":\"mov\",\"link\":\""
+        let json_Str = "{\"content\": \"ok3 why name a wankster\", \"media\" : [{\"contentType\":\"image/png\",\"ext\":\"png\",\"link\":\""
         +
             link +
         //https://sqor-videos-input-dev.s3.amazonaws.com/a93785c8-72fd-4c62-8f82-3ab76eb572e4.mov
         
-        "\",\"name\":\"video.mov\",\"type\":\"video\"}]}"   //NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
+        "\",\"name\":\"image.png\",\"type\":\"image\"}]}"   //NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
         
         println(json_Str)
         println(" JSON OBJ")
