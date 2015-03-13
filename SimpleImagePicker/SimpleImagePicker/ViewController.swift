@@ -138,40 +138,69 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
             println("IMAGE!!!!!!")
             // Media is an image
             
+            self.contentType = "image/png"
+            
+            self.mediaType = "iamge"
+            self.fileExtension = "png"
+        
+        
+            var chosenImage = info[UIImagePickerControllerOriginalImage] as UIImage //2
+            myImageView.contentMode = .ScaleAspectFit //3
+            myImageView.image = chosenImage //4
+            
+            var nsDataImage = UIImagePNGRepresentation(chosenImage)
+            dismissViewControllerAnimated(true, completion: nil) //5
+            
+            println("PICKED PHOTO")
+            
+            
+            
+            self.globalImageData = nsDataImage
+            
+            getSignedURL()
+            //  println(    nsDataImage.description)
+        
         } else if mediaType.isEqualToString(kUTTypeMovie as NSString) {
             
             // Media is a video
             
+            self.contentType = "video/quicktime"
             
+            self.mediaType = "video"
+            self.fileExtension = "mov"
             println("VIDEO")
+            
+            // TODO: make video picking possible
+            
+            var chosenImage =   info[UIImagePickerControllerMediaURL]   as NSURL // as UIImage //2
+            
+            
+            var nsDataImage = NSData(contentsOfURL: chosenImage, options: nil, error: nil)
+            
+            //   myImageView.contentMode = .ScaleAspectFit //3
+            //   myImageView.image = chosenImage //4
+            
+            //        var nsDataImage = chosenImage
+            // UIImagePNGRepresentation(chosenImage)
+            dismissViewControllerAnimated(true, completion: nil) //5
+            
+            println("PICKED PHOTO")
+            
+            
+            //  nsDataImage.data
+            
+            self.globalImageData = nsDataImage
+            
+            println("NS URL: ")
+            println(chosenImage)
+            
+            
         }
         
         
         
         
-        // TODO: make video picking possible
-        
-        var chosenImage =   info[UIImagePickerControllerMediaURL]   as NSURL // as UIImage //2
-        
-       
-        var nsDataImage = NSData(contentsOfURL: chosenImage, options: nil, error: nil)
-        
-     //   myImageView.contentMode = .ScaleAspectFit //3
-     //   myImageView.image = chosenImage //4
-        
-//        var nsDataImage = chosenImage
-        // UIImagePNGRepresentation(chosenImage)
-        dismissViewControllerAnimated(true, completion: nil) //5
-        
-        println("PICKED PHOTO")
-        
-        
-      //  nsDataImage.data
-        
-        self.globalImageData = nsDataImage
-        
-        println("NS URL: ")
-        println(chosenImage)
+
         getSignedURL()
         //  println(    nsDataImage.description)
     }
@@ -227,7 +256,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         //  let accessToken = "PRppT0hm6ZkDf9OvtfufPWqiH/zsY2npspRL3iBZwTNVOs8cV0HIwAytbH782l0J"
         //  request.addValue(accessToken , forHTTPHeaderField: "access-token")
         
-        request.setValue("video/quicktime", forHTTPHeaderField: "Content-Type")
+        request.setValue(self.contentType, forHTTPHeaderField: "Content-Type")
         uploadFiles(request, data: data)
         
         
@@ -294,11 +323,11 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         println(link)
         
         println("ACTUAL POST URL ")
-        let json_Str = "{\"content\": \"ok4 why name a wankster\", \"media\" : [{\"contentType\":\"video/quicktime\",\"ext\":\"mov\",\"link\":\""
+        let json_Str = "{\"content\": \"ok4 why name a wankster\", \"media\" : [{\"contentType\":\"" + contentType + "\",\"ext\":\"" + fileExtension + "\",\"link\":\""
             +
             link +
             
-        "\",\"name\":\"video.mov\",\"type\":\"video\"}]}"   //NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
+        "\",\"name\":\"video.mov\",\"type\":\"" + mediaType + "\"}]}"   //NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
         
         println(json_Str)
         println(" JSON OBJ")
@@ -378,8 +407,12 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     
     
     
+    var contentType: String =  "movie/quicktime"
+    var fileExtension: String = "mov"
     
-    func getSignedURL(){
+    var mediaType: String = "video"
+    
+    func getSignedURL( ){
         
         println("submitting post")
         
@@ -401,9 +434,9 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         //  let accessToken = userData.valueForKey("access_token") as String;
         
         
-        var params = ["content_type": "video/quicktime",
-            "file_extension": "mov",
-            "media_type": "video"   ] as Dictionary<String, String>
+        var params = ["content_type": contentType,
+            "file_extension": fileExtension,
+            "media_type": mediaType   ] as Dictionary<String, String>
         
         var err: NSError?
         request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
