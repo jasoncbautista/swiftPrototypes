@@ -242,10 +242,13 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     }
     
     
+    @IBOutlet weak var postTextField: UITextField!
     var postValue = "Sample Post"
     func makePost(){
     
         println("submitting post")
+        
+       postValue = postTextField.text
         
         // TODO: if blank dont submit
         var request = NSMutableURLRequest(URL: NSURL(string: "https://rest-dev.sqor.com/posts")!)

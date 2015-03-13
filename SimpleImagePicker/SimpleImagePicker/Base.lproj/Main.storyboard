@@ -19,9 +19,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tshirt.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="PYH-RH-d41">
                                 <rect key="frame" x="127" y="98" width="347" height="341"/>
                             </imageView>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CzB-eg-spZ">
-                                <rect key="frame" x="60" y="79" width="150" height="2"/>
-                            </progressView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mz3-Lt-bUU">
                                 <rect key="frame" x="96" y="336" width="32" height="30"/>
                                 <state key="normal" title="Post">
@@ -31,6 +28,14 @@
                                     <action selector="photoFromLIb2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zic-dJ-bcY"/>
                                 </connections>
                             </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CzB-eg-spZ">
+                                <rect key="frame" x="60" y="79" width="150" height="2"/>
+                            </progressView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pSj-b5-iVN">
+                                <rect key="frame" x="31" y="119" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -46,6 +51,7 @@
                         <outlet property="PostButton" destination="Mz3-Lt-bUU" id="8xm-hS-8fX"/>
                         <outlet property="barButton2" destination="Uar-AO-P7V" id="Ps5-BP-hLd"/>
                         <outlet property="myImageView" destination="PYH-RH-d41" id="Iit-1K-8HC"/>
+                        <outlet property="postTextField" destination="pSj-b5-iVN" id="dhu-j4-HIc"/>
                         <outlet property="progressView" destination="CzB-eg-spZ" id="x1H-hW-jie"/>
                     </connections>
                 </viewController>
