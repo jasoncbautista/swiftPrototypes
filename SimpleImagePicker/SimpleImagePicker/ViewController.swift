@@ -52,6 +52,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     }
     
     
+    @IBOutlet weak var PostButton: UIButton!
     @IBOutlet weak var barButton2: UIBarButtonItem!
     
     
@@ -59,6 +60,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     @IBAction func photoFromLIb2(sender: UIButton) {
         
         
+        PostButton.enabled = false
         picker.allowsEditing = false //2
         picker.sourceType = .PhotoLibrary //3
       //  picker.mediaTypes =  [kUTTypeImage]
@@ -192,55 +194,28 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     
     func uploadActualFile(jsonStr: String){
         
+        var data: NSData =   self.globalImageData!
         
-        
-        
-       //let bundle = NSBundle.mainBundle()
-        //let path = bundle.pathForResource("greenbright01", ofType: "png")
-        var data: NSData =   self.globalImageData! //NSData(contentsOfFile: path!)!
-        
-        
-        // IMPORTANT : THIS URL HAS TO BE REQUESTED LIKE THIS:
-        
-      
-        
-        
-        
-        // REMOVE STUPID " from start and end
-        
+        // REMOVING STUPID " from start and end
         let str : String = jsonStr
-        
         println(str)
-        println("STRING ^")
+        //TODO: what if the URL is blank? or this crashes?
         let realURL =  str.substringWithRange(Range<String.Index>(start: advance(str.startIndex, 1), end: advance(str.endIndex, -1)))
-        println("OMG OMG OMG")
-        println("OMG OMG OMG")
+
         
-        
-        
+        println("Real URL: " )
         println(realURL)
         
         self.link = realURL
         let url = NSURL(string: realURL)
         
-        
+    
         var request = NSMutableURLRequest(URL: url! )
         request.HTTPMethod = "PUT"
         request.setValue("keep-alive", forHTTPHeaderField: "Connection")
         
-        
-        
-        //   request.setValue("Content-Type", forHTTPHeaderField: "image/jpeg")
-        
-        //  let accessToken = "PRppT0hm6ZkDf9OvtfufPWqiH/zsY2npspRL3iBZwTNVOs8cV0HIwAytbH782l0J"
-        //  request.addValue(accessToken , forHTTPHeaderField: "access-token")
-        
         request.setValue(self.contentType, forHTTPHeaderField: "Content-Type")
         uploadFiles(request, data: data)
-        
-        
-        
-        
         
     }
     
@@ -278,7 +253,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         
     
         
-        println("ACTUAL POST URL ")
+
         
         
         var fullNameArr = split(self.link) {$0 == "?"}
@@ -287,7 +262,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         
         println(link)
         
-        println("ACTUAL POST URL ")
+
         let json_Str = "{\"content\": \"" + postValue + "\", \"media\" : [{\"contentType\":\"" + contentType + "\",\"ext\":\"" + fileExtension + "\",\"link\":\""
             +
             link +
@@ -314,11 +289,8 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         
         var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
             
-            println("WTF WHY IS THIS FAILIN----------------")
-            
-            println("Response: \(response)")
             var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
-            println("Body: \(strData)")
+
             var err: NSError?
             var json = NSJSONSerialization.JSONObjectWithData(data, options: .MutableLeaves, error: &err) as? NSDictionary
             
@@ -335,11 +307,13 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
                     // Okay, the parsedJSON is here, let's get the value for 'success' out of it
                     var success = parseJSON["success"] as? Int
                     println("Succes: \(success)")
+                    self.resetEverything()
                 }
                 else {
                     // Woa, okay the json object was nil, something went worng. Maybe the server isn't running?
                     let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
                     println("Error could not parse JSON: \(jsonStr)")
+                    self.resetEverything()
                 }
             }
         })
@@ -347,6 +321,12 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         task.resume()
         
         
+    }
+    
+    
+    
+    private func resetEverything(){
+            PostButton.enabled = true
     }
     
     
