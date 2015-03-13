@@ -290,6 +290,8 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     }
     
     
+    
+    var postValue = "Sample Post"
     func makePost(){
         
         
@@ -326,7 +328,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         println(link)
         
         println("ACTUAL POST URL ")
-        let json_Str = "{\"content\": \"ok4 why name a wankster\", \"media\" : [{\"contentType\":\"" + contentType + "\",\"ext\":\"" + fileExtension + "\",\"link\":\""
+        let json_Str = "{\"content\": \"" + postValue + "\", \"media\" : [{\"contentType\":\"" + contentType + "\",\"ext\":\"" + fileExtension + "\",\"link\":\""
             +
             link +
             
