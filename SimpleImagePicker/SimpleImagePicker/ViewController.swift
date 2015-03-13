@@ -103,31 +103,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     
     
 
-    //MARK: - Delegates
-    //What to do when the picker returns with a photo
-/*
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-        
-        // TODO: make video picking possible
-        
-        var chosenImage = info[UIImagePickerControllerOriginalImage] as UIImage //2
-        myImageView.contentMode = .ScaleAspectFit //3
-        myImageView.image = chosenImage //4
-        
-        var nsDataImage = UIImagePNGRepresentation(chosenImage)
-        dismissViewControllerAnimated(true, completion: nil) //5
-        
-        println("PICKED PHOTO")
-        
-        
-        
-        self.globalImageData = nsDataImage
-        
-        getSignedURL()
-      //  println(    nsDataImage.description)
-    }
-    
-*/
+
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         
         
@@ -309,14 +285,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         var session = NSURLSession.sharedSession()
         request.HTTPMethod = "POST"
         
-        
-        
-        
-        
-        
-        
-        
-        
+    
         
         println("ACTUAL POST URL ")
         
