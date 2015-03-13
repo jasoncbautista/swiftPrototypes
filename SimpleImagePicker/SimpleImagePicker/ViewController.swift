@@ -7,6 +7,7 @@
 //
 
 
+import MobileCoreServices
 
 import UIKit
 
@@ -23,6 +24,9 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
    //@IBOutlet weak var myImageView: UIImageView!
     @IBOutlet weak var myImageView: UIImageView!
     let picker = UIImagePickerController()   //our controller.
+
+
+    
     //Memory will be conserved a bit if you place this in the actions.
     // I did this to make code a bit more streamlined
     
@@ -43,7 +47,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     @IBAction func photoFromLibrary(sender: UIBarButtonItem) {
 
 
-
+        println("GETTING PHOTO FROM LIBRARY")
         
     }
     
@@ -51,16 +55,22 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     @IBOutlet weak var barButton2: UIBarButtonItem!
     
     
+    
     @IBAction func photoFromLIb2(sender: UIButton) {
         
         
         picker.allowsEditing = false //2
         picker.sourceType = .PhotoLibrary //3
+      //  picker.mediaTypes =  [kUTTypeImage]
+        picker.mediaTypes =  [kUTTypeImage, kUTTypeMovie]
+        
         picker.modalPresentationStyle = .Popover
         presentViewController(picker, animated: true, completion: nil)//4
         picker.popoverPresentationController?.barButtonItem = barButton2
         
     }
+    
+    /*
     @IBAction func photoFromLib(sender: UIBarButtonItem) {
         
         
@@ -73,6 +83,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         
         
     }
+*/
     //take a picture, check if we have a camera first.
     @IBAction func shootPhoto(sender: UIBarButtonItem) {
         if UIImagePickerController.availableCaptureModesForCameraDevice(.Rear) != nil {
@@ -89,9 +100,15 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         // Do any additional setup after loading the view, typically from a nib.
         picker.delegate = self   //the required delegate to get a photo back to the app.
     }
+    
+    
+
     //MARK: - Delegates
     //What to do when the picker returns with a photo
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        
+        // TODO: make video picking possible
+        
         var chosenImage = info[UIImagePickerControllerOriginalImage] as UIImage //2
         myImageView.contentMode = .ScaleAspectFit //3
         myImageView.image = chosenImage //4
