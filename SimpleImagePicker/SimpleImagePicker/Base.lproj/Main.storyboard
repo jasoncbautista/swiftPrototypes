@@ -28,6 +28,9 @@
                                     <action selector="photoFromLIb2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zic-dJ-bcY"/>
                                 </connections>
                             </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CzB-eg-spZ">
+                                <rect key="frame" x="60" y="79" width="150" height="2"/>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -43,6 +46,7 @@
                         <outlet property="PostButton" destination="Mz3-Lt-bUU" id="8xm-hS-8fX"/>
                         <outlet property="barButton2" destination="Uar-AO-P7V" id="Ps5-BP-hLd"/>
                         <outlet property="myImageView" destination="PYH-RH-d41" id="Iit-1K-8HC"/>
+                        <outlet property="progressView" destination="CzB-eg-spZ" id="x1H-hW-jie"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

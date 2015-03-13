@@ -331,10 +331,16 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     }
     
     
+    
+    @IBOutlet weak var progressView: UIProgressView!
+    
     func URLSession(session: NSURLSession, task: NSURLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) {
+    
         var uploadProgress: Float = Float(totalBytesSent) / Float(totalBytesExpectedToSend)
         println("session \(session) uploaded \(uploadProgress * 100)%.")
-       // progressView.progress = uploadProgress
+        progressView.progress = uploadProgress
+    
+        
     }
     
     func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveResponse response: NSURLResponse, completionHandler: (NSURLSessionResponseDisposition) -> Void) {
@@ -344,6 +350,8 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     
     func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
         responseData.appendData(data)
+        
+        
     }
     
     
