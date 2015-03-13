@@ -130,6 +130,25 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
 */
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         
+        
+        
+        let mediaType = info[UIImagePickerControllerMediaType] as NSString
+        
+        if mediaType.isEqualToString(kUTTypeImage as NSString) {
+            println("IMAGE!!!!!!")
+            // Media is an image
+            
+        } else if mediaType.isEqualToString(kUTTypeMovie as NSString) {
+            
+            // Media is a video
+            
+            
+            println("VIDEO")
+        }
+        
+        
+        
+        
         // TODO: make video picking possible
         
         var chosenImage =   info[UIImagePickerControllerMediaURL]   as NSURL // as UIImage //2
