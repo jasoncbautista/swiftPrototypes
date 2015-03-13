@@ -189,6 +189,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     //What to do if the image picker cancels.
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
+        self.resetEverything()
     }
     
     
