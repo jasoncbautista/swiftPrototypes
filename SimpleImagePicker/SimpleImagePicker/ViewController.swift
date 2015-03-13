@@ -140,7 +140,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
             
             self.contentType = "image/png"
             
-            self.mediaType = "iamge"
+            self.mediaType = "image"
             self.fileExtension = "png"
         
         
@@ -233,6 +233,9 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         // REMOVE STUPID " from start and end
         
         let str : String = jsonStr
+        
+        println(str)
+        println("STRING ^")
         let realURL =  str.substringWithRange(Range<String.Index>(start: advance(str.startIndex, 1), end: advance(str.endIndex, -1)))
         println("OMG OMG OMG")
         println("OMG OMG OMG")
