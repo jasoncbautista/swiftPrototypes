@@ -105,6 +105,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
 
     //MARK: - Delegates
     //What to do when the picker returns with a photo
+/*
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         
         // TODO: make video picking possible
@@ -125,6 +126,40 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         getSignedURL()
       //  println(    nsDataImage.description)
     }
+    
+*/
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        
+        // TODO: make video picking possible
+        
+        var chosenImage =   info[UIImagePickerControllerMediaURL]   as NSURL // as UIImage //2
+        
+       
+        var nsDataImage = NSData(contentsOfURL: chosenImage, options: nil, error: nil)
+        
+     //   myImageView.contentMode = .ScaleAspectFit //3
+     //   myImageView.image = chosenImage //4
+        
+//        var nsDataImage = chosenImage
+        // UIImagePNGRepresentation(chosenImage)
+        dismissViewControllerAnimated(true, completion: nil) //5
+        
+        println("PICKED PHOTO")
+        
+        
+      //  nsDataImage.data
+        
+        self.globalImageData = nsDataImage
+        
+        println("NS URL: ")
+        println(chosenImage)
+        getSignedURL()
+        //  println(    nsDataImage.description)
+    }
+    
+    
+    
+    
     //What to do if the image picker cancels.
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
@@ -173,7 +208,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         //  let accessToken = "PRppT0hm6ZkDf9OvtfufPWqiH/zsY2npspRL3iBZwTNVOs8cV0HIwAytbH782l0J"
         //  request.addValue(accessToken , forHTTPHeaderField: "access-token")
         
-        request.setValue("image/png", forHTTPHeaderField: "Content-Type")
+        request.setValue("video/quicktime", forHTTPHeaderField: "Content-Type")
         uploadFiles(request, data: data)
         
         
@@ -240,11 +275,11 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         println(link)
         
         println("ACTUAL POST URL ")
-        let json_Str = "{\"content\": \"ok3 why name a wankster\", \"media\" : [{\"contentType\":\"image/png\",\"ext\":\"png\",\"link\":\""
+        let json_Str = "{\"content\": \"ok4 why name a wankster\", \"media\" : [{\"contentType\":\"video/quicktime\",\"ext\":\"mov\",\"link\":\""
             +
             link +
             
-        "\",\"name\":\"image.png\",\"type\":\"image\"}]}"   //NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
+        "\",\"name\":\"video.mov\",\"type\":\"video\"}]}"   //NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
         
         println(json_Str)
         println(" JSON OBJ")
@@ -347,9 +382,9 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         //  let accessToken = userData.valueForKey("access_token") as String;
         
         
-        var params = ["content_type": "image/png",
-            "file_extension": "png",
-            "media_type": "image"   ] as Dictionary<String, String>
+        var params = ["content_type": "video/quicktime",
+            "file_extension": "mov",
+            "media_type": "video"   ] as Dictionary<String, String>
         
         var err: NSError?
         request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
