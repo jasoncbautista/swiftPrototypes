@@ -229,7 +229,11 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         task.resume()
     }
     
+    
+    var posting = false
     func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
+        
+       
         if error != nil {
             println("session \(session) occurred error \(error?.localizedDescription)")
         } else {
@@ -303,6 +307,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
                 println(err!.localizedDescription)
                 let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
                 println("Error could not parse JSON: '\(jsonStr)'")
+                self.resetEverything()
             }
             else {
                 // The JSONObjectWithData constructor didn't return an error. But, we should still
@@ -310,7 +315,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
                 if let parseJSON = json {
                     // Okay, the parsedJSON is here, let's get the value for 'success' out of it
                     var success = parseJSON["success"] as? Int
-                    println("Succes: \(success)")
+                    println("Succes 111 : \(success)")
                     self.resetEverything()
                 }
                 else {
@@ -331,6 +336,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     
     private func resetEverything(){
             PostButton.enabled = true
+        posting = false
     }
     
     
@@ -357,7 +363,13 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         
     }
     
+    /*
+    if(posting == true){
+    return
+    }
     
+    posting = true
+*/
     
     var contentType: String =  "movie/quicktime"
     var fileExtension: String = "mov"
@@ -397,6 +409,14 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
       
             var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
 
+            
+            if(self.posting == true){
+                return
+            }
+            
+            self.posting = true
+            
+            
             self.uploadActualFile(strData!)
 
         })
